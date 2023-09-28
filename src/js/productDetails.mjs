@@ -1,21 +1,22 @@
 import { findProductById } from "./productData.mjs";
+import { setLocalStorage } from "./utils.mjs";
+
+let theProduct = {};
 
 export default async function productDetails(productId) {
     
-    const theProduct = await findProductById(productId);
+    theProduct = await findProductById(productId);
     renderProductDetails(theProduct);
+
+    // Add the event listener now that the page is rendered.
+    document.getElementById("addToCart").addEventListener('click', addProductToCart);
 }
 
-export function addProductToCart(product) {
-    setLocalStorage("so-cart", product);
+export function addProductToCart() {
+    setLocalStorage("so-cart", theProduct);
   }
 
-function listColors(color) {
-    return color.ColorName + "<br>";
-}
-
 function renderProductDetails(product) {
-    console.log(product);
 
     const productName = document.getElementById('productName');
     const productNameWithoutBrand = document.getElementById('productNameWithoutBrand');
@@ -23,6 +24,7 @@ function renderProductDetails(product) {
     const productFinalPrice = document.getElementById('productFinalPrice');
     const productColorName = document.getElementById('productColorName');
     const productDescriptionHtmlSimple = document.getElementById('productDescriptionHtmlSimple');
+    const addToCartButton = document.getElementById('addToCart');
 
     productName.innerHTML = product.Name;
     productNameWithoutBrand.innerHTML = product.NameWithoutBrand;
@@ -36,21 +38,10 @@ function renderProductDetails(product) {
     
     let colorListHtml = colorList.join('<br>');
     productColorName.innerHTML = colorListHtml;
-
-    // productColorName.innerHTML = product.Colors
-    //     .forEach(listColors);
-
-    // productColorName.innerHTML = product.Colors
-    //     .forEach(
-    //         (aColor) => {
-    //             console.log(aColor);
-    //             return aColor.ColorName + "<br>";
-    //         }
-    //     );
     
     productDescriptionHtmlSimple.innerHTML = product.DescriptionHtmlSimple;
 
-
+    addToCartButton.dataset.id = product.Id;
 
     return product;
 }
