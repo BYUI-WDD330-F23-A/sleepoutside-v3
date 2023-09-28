@@ -3,6 +3,7 @@ import { findProductById } from "./productData.mjs";
 
 function addProductToCart(product) {
   setLocalStorage("so-cart", product);
+  alert( localStorage.getItem('so-cart') );
 }
 // add to cart button event handler
 async function addToCartHandler(e) {
