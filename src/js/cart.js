@@ -5,7 +5,7 @@ function renderCartContents() {
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
   
-  /* The `if` statement is checking if the `cartItems` variable is not null. If it is not null, it means that there are items in the cart. */
+  // cartItems will now never be NULL. More appropriate to check for empty array.
   if (cartItems.length > 0) {
     //console.log("The cart has something"); 
     let totalItems = cartItems.map(function(item){
