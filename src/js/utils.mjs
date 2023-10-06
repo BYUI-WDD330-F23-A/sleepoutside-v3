@@ -35,3 +35,13 @@ export function getParam(param) {
 
   return value;
 }
+
+export function renderListWithTemplate(templateFn, parentElement, list, position = "afterbegin", clear = true) {
+  //clear
+  if (clear) {
+    parentElement.innerHTML = ""; 
+    console.log("HTML clear"); 
+  }
+  const htmlStrings = list.map(templateFn); 
+  parentElement.insertAdjacentHTML(position, htmlStrings.join("")); //join() array returns a new string concatenating. 
+}
