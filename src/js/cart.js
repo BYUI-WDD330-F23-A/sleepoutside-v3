@@ -1,12 +1,14 @@
 import { getLocalStorage } from "./utils.mjs";
 
 function renderCartContents() {
-  const cartItems = getLocalStorage("so-cart");
+  const cartItems = getLocalStorage("so-cart") || []; // Need to assign an empty array if LocalStorage is null (empty).
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
 
-  /* The `if` statement is checking if the `cartItems` variable is not null. If it is not null, it means that there are items in the cart. */
-  if (cartItems != null) {
+
+  // cartItems will now never be NULL. More appropriate to check for empty array.
+  if (cartItems.length > 0) {
+
     //console.log("The cart has something");
     let totalItems = cartItems.map(function (item) {
       let total = [];
