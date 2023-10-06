@@ -5,8 +5,10 @@ function renderCartContents() {
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
 
+
   // cartItems will now never be NULL. More appropriate to check for empty array.
   if (cartItems.length > 0) {
+
     //console.log("The cart has something");
     let totalItems = cartItems.map(function (item) {
       let total = [];
