@@ -195,6 +195,7 @@ button {
 .cart-card__quantity {
   grid-row: 1;
   grid-column: 3;
+  width: 40px;
 }
 
 .cart-card__price {

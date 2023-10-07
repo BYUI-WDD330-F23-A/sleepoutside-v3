@@ -47,7 +47,13 @@ function cartItemTemplate(item) {
     <h2 class="card__name">${item.Name}</h2>
   </a>
   <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-  <p class="cart-card__quantity">qty: 1</p>
+  <select class="cart-card__quantity select" id="textboxes">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  </select>
   <p class="cart-card__price">$${item.FinalPrice}</p>
 </li>`;
 
@@ -55,3 +61,14 @@ function cartItemTemplate(item) {
 }
 
 renderCartContents();
+
+// Selecting how many items had been chose from the dropdown.
+const sel = document.querySelectorAll(".cart-card__quantity");
+console.log(sel);
+
+sel.forEach((e) => {
+  e.addEventListener("change", (event) => {
+    console.log(e.value);
+    console.log(e.parentNode);
+  });
+});
