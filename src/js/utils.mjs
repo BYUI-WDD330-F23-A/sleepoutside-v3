@@ -40,8 +40,16 @@ export function renderListWithTemplate(templateFn, parentElement, list, position
   //clear
   if (clear) {
     parentElement.innerHTML = ""; 
-    console.log("HTML clear"); 
   }
   const htmlStrings = list.map(templateFn); 
   parentElement.insertAdjacentHTML(position, htmlStrings.join("")); //join() array returns a new string concatenating. 
+}
+
+
+export function convertToJson(res) {
+  if (res.ok) {
+    return res.json();
+  } else {
+    throw new Error("Bad Response");
+  }
 }
