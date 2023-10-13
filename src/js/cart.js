@@ -1,4 +1,5 @@
 import { getLocalStorage, loadHeaderFooter } from "./utils.mjs";
+import  shoppingList   from "./shoppingCart.mjs";
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart") || []; // Need to assign an empty array if LocalStorage is null (empty).
@@ -18,20 +19,7 @@ function renderCartContents() {
   }
 }
 
-function checkoutTemplate(items) {
-  let sumTotal = 0;
-  items.forEach((value) => {
-    sumTotal += parseFloat(value);
-  });
-  /* console.log("Checking")
-  console.log(sumTotal); */
 
-  const totalPrice = `<div class="cart-footer-hide">
-  <p class="cart-total">Total: $${sumTotal}</p>
-  <button id="checkoutBtn">Checkout</button>
-</div>`;
-  return totalPrice;
-}
 
 function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
@@ -53,4 +41,6 @@ function cartItemTemplate(item) {
 }
 
 loadHeaderFooter();
-renderCartContents();
+//renderCartContents();
+shoppingList("shopping-list");
+
