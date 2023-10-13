@@ -1,14 +1,12 @@
-import { getLocalStorage } from "./utils.mjs";
+import { getLocalStorage, loadHeaderFooter } from "./utils.mjs";
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart") || []; // Need to assign an empty array if LocalStorage is null (empty).
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
 
-
   // cartItems will now never be NULL. More appropriate to check for empty array.
   if (cartItems.length > 0) {
-
     //console.log("The cart has something");
     let totalItems = cartItems.map(function (item) {
       let total = [];
@@ -54,4 +52,5 @@ function cartItemTemplate(item) {
   return newItem;
 }
 
+loadHeaderFooter();
 renderCartContents();

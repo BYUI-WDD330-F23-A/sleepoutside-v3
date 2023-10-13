@@ -19,13 +19,12 @@ export async function pageAlert() {
         // Nothing to do, just exit.
         return false;
     }
-    console.log(alertList);
 
     document
         .getElementById('main')
         .insertAdjacentHTML("beforebegin", '<section id="alertBox" class="alert-list"></section>');
     
-    alertBox = document.getElementById('alertBox');
+    let alertBox = document.getElementById('alertBox');
 
     renderListWithTemplate(alertTemplate, alertBox, alertList, "afterbegin");
 }
