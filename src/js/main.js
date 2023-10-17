@@ -5,7 +5,9 @@ import { loadHeaderFooter } from "./utils.mjs";
 
 /// We might initialized some variables.
 /// We might call an API...
-productList("prodList", "tents");
+if (document.getElementById("prodList")) {
+  productList("prodList", "tents");
+}
 
 /// We might output some values.
 pageAlert();

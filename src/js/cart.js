@@ -1,11 +1,9 @@
 import { loadHeaderFooter } from "./utils.mjs";
-import  shoppingList   from "./shoppingCart.mjs";
+import shoppingList from "./shoppingCart.mjs";
 
 loadHeaderFooter();
 shoppingList("shopping-list");
 
-<<<<<<< Updated upstream
-=======
   // cartItems will now never be NULL. More appropriate to check for empty array.
   console.log(cartItems);
   if (cartItems.length > 0) {
@@ -82,4 +80,3 @@ function addingTotalItem() {
   });
   console.log(cartItems);
 }
->>>>>>> Stashed changes
