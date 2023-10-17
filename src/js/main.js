@@ -3,6 +3,7 @@ import { default as productList } from "./productList.mjs";
 import { pageAlert } from "./alert.mjs";
 import { loadHeaderFooter } from "./utils.mjs";
 
+
 /// We might initialized some variables.
 /// We might call an API...
 productList("prodList", "tents");
@@ -11,3 +12,4 @@ productList("prodList", "tents");
 pageAlert();
 
 loadHeaderFooter();
+

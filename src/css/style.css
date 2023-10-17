@@ -111,6 +111,7 @@ button {
 
 .cart svg {
   width: 25px;
+  /* animation: addProduct 1s ease-in forwards; */
 }
 .cart:hover svg {
   fill: gray;

@@ -1,5 +1,6 @@
 import { findProductById } from "./productData.mjs";
 import { setLocalStorage } from "./utils.mjs";
+import { iconAnimation } from "./shoppingCart.mjs"; 
 
 let theProduct = {};
 
@@ -9,7 +10,8 @@ export default async function productDetails(productId) {
     renderProductDetails(theProduct);
 
     // Add the event listener now that the page is rendered.
-    document.getElementById("addToCart").addEventListener('click', addProductToCart);
+    document.getElementById("addToCart").addEventListener("click", addProductToCart);
+    document.getElementById("addToCart").addEventListener("click", iconAnimation);
 }
 
 export function addProductToCart() {
@@ -18,13 +20,13 @@ export function addProductToCart() {
 
 function renderProductDetails(product) {
 
-    const productName = document.getElementById('productName');
-    const productNameWithoutBrand = document.getElementById('productNameWithoutBrand');
-    const productImage = document.getElementById('productImage');
-    const productFinalPrice = document.getElementById('productFinalPrice');
-    const productColorName = document.getElementById('productColorName');
-    const productDescriptionHtmlSimple = document.getElementById('productDescriptionHtmlSimple');
-    const addToCartButton = document.getElementById('addToCart');
+    const productName = document.getElementById("productName");
+    const productNameWithoutBrand = document.getElementById("productNameWithoutBrand");
+    const productImage = document.getElementById("productImage");
+    const productFinalPrice = document.getElementById("productFinalPrice");
+    const productColorName = document.getElementById("productColorName");
+    const productDescriptionHtmlSimple = document.getElementById("productDescriptionHtmlSimple");
+    const addToCartButton = document.getElementById("addToCart");
 
     productName.innerHTML = product.Name;
     productNameWithoutBrand.innerHTML = product.NameWithoutBrand;
@@ -36,7 +38,7 @@ function renderProductDetails(product) {
         (aColor) => aColor.ColorName
     );
     
-    let colorListHtml = colorList.join('<br>');
+    let colorListHtml = colorList.join("<br>");
     productColorName.innerHTML = colorListHtml;
     
     productDescriptionHtmlSimple.innerHTML = product.DescriptionHtmlSimple;

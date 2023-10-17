@@ -1,4 +1,4 @@
-import { renderListWithTemplate, getLocalStorage } from "./utils.mjs";
+import { renderListWithTemplate, getLocalStorage} from "./utils.mjs";
 
 function shoppingCartTemplate(item) {
     const newItem = `<li class="cart-card divider">
@@ -52,3 +52,18 @@ export default function shoppingList(selector = "") {
   renderListWithTemplate(shoppingCartTemplate, itemListArea, products); 
 
 }
+
+export function iconAnimation() { 
+  const iconCart = document.getElementById("cart-icon"); 
+  iconCart.style.width = `35px`;
+  iconCart.style.fill = `#525b0f`; 
+
+  setTimeout(() => {
+      iconCart.style.width = `25px`; 
+      iconCart.style.fill = `#303030`; 
+  }, 2000); 
+}
+
+
+
+

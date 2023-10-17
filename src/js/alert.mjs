@@ -1,4 +1,4 @@
-import { convertToJson, renderListWithTemplate } from './utils.mjs';
+import { convertToJson, renderListWithTemplate } from "./utils.mjs";
 
 function getAlertData() {
     return fetch(`../json/alerts.json`)
@@ -13,7 +13,7 @@ function alertTemplate(theAlert) {
 
 export async function pageAlert() { 
     let alertList = await getAlertData()
-        .then( (data) => data ) || [];
+        .then((data) => data) || [];
     
     if (alertList.length < 1) {
         // Nothing to do, just exit.
@@ -21,10 +21,10 @@ export async function pageAlert() {
     }
 
     document
-        .getElementById('main')
-        .insertAdjacentHTML("beforebegin", '<section id="alertBox" class="alert-list"></section>');
+        .getElementById("main")
+        .insertAdjacentHTML("beforebegin", `<section id="alertBox" class="alert-list"></section>`);
     
-    let alertBox = document.getElementById('alertBox');
+    let alertBox = document.getElementById("alertBox");
 
     renderListWithTemplate(alertTemplate, alertBox, alertList, "afterbegin");
 }
