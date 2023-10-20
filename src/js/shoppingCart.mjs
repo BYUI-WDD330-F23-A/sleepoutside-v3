@@ -12,7 +12,13 @@ function shoppingCartTemplate(item) {
       <h2 class="card__name">${item.Name}</h2>
     </a>
     <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-    <p class="cart-card__quantity">qty: 1</p>
+    <select class="cart-card__quantity select" id="textboxes">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    </select>
     <p class="cart-card__price">$${item.FinalPrice}</p>
   </li>`;
   
@@ -64,6 +70,27 @@ export function iconAnimation() {
   }, 2000); 
 }
 
+addingTotalItem();
+
+function addingTotalItem() {
+  // Selecting how many items had been chose from the dropdown.
+  const sel = document.querySelectorAll(".cart-card__quantity");
+  const cartItems = getLocalStorage("so-cart") || [];
+  sel.forEach((e, i) => {
+    e.addEventListener("change", (event) => {
+      cartItems[i].count = e.value;
+      let totalItems = cartItems.map(function (item) {
+        let total = [];
+        let count = item.count ? item.count : 1;
+        total.push(item.FinalPrice * count);
+        return total;
+      });
+      document.querySelector(".checkout-area").innerHTML =
+        checkoutTemplate(totalItems);
+    });
+  });
+  console.log(cartItems);
+}
 
 
 
