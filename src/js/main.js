@@ -3,11 +3,8 @@ import { pageAlert } from "./alert.mjs";
 import { loadHeaderFooter } from "./utils.mjs";
 import categoryList from "./categoryList.mjs";
 
-
 /// We might initialized some variables.
 /// We might call an API...
-
-
 
 /// We might output some values.
 pageAlert();
@@ -17,5 +14,3 @@ if (document.getElementById("categoryListArea")) {
 }
 
 loadHeaderFooter();
-
-
