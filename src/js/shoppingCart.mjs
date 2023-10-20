@@ -40,7 +40,6 @@ function checkoutTemplate(items) {
   }
 
 export default function shoppingList(selector = "") {
-  //TODO add something 
   const itemListArea = document.getElementById(selector); 
   const products =  getLocalStorage("so-cart");  
 
