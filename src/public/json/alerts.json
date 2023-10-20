@@ -1,0 +1,12 @@
+[
+  {
+    "message": "This is only a test",
+    "background": "darkblue",
+    "color": "white"
+  },
+  {
+    "message": "Our website will be under maintenance on 15-Oct-2023 from 11:00 PM to 1:00 AM.",
+    "background": "yellow",
+    "color": "black"
+  }
+]

@@ -1,14 +1,13 @@
-import { getLocalStorage } from "./utils.mjs";
+import { loadHeaderFooter } from "./utils.mjs";
+import shoppingList from "./shoppingCart.mjs";
 
-function renderCartContents() {
-  const cartItems = getLocalStorage("so-cart") || []; // Need to assign an empty array if LocalStorage is null (empty).
-  const htmlItems = cartItems.map((item) => cartItemTemplate(item));
-  document.querySelector(".product-list").innerHTML = htmlItems.join("");
+loadHeaderFooter();
+shoppingList("shopping-list");
 
-
+/*
   // cartItems will now never be NULL. More appropriate to check for empty array.
+  console.log(cartItems);
   if (cartItems.length > 0) {
-
     //console.log("The cart has something");
     let totalItems = cartItems.map(function (item) {
       let total = [];
@@ -25,8 +24,7 @@ function checkoutTemplate(items) {
   items.forEach((value) => {
     sumTotal += parseFloat(value);
   });
-  /* console.log("Checking")
-  console.log(sumTotal); */
+
 
   const totalPrice = `<div class="cart-footer-hide">
   <p class="cart-total">Total: $${sumTotal}</p>

@@ -81,6 +81,12 @@ header {
   color: var(--tertiary-color);
 }
 
+.alert-list p {
+  padding: 10px;
+  text-align: center;
+  border-radius: 8px;
+}
+
 button {
   padding: 0.5em 2em;
   background-color: var(--secondary-color);
@@ -105,6 +111,7 @@ button {
 
 .cart svg {
   width: 25px;
+  /* animation: addProduct 1s ease-in forwards; */
 }
 .cart:hover svg {
   fill: gray;

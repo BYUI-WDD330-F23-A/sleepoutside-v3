@@ -40,8 +40,56 @@ export function renderListWithTemplate(templateFn, parentElement, list, position
   //clear
   if (clear) {
     parentElement.innerHTML = ""; 
-    console.log("HTML clear"); 
   }
   const htmlStrings = list.map(templateFn); 
   parentElement.insertAdjacentHTML(position, htmlStrings.join("")); //join() array returns a new string concatenating. 
+}
+
+
+export function convertToJson(res) {
+  if (res.ok) {
+    return res.json();
+  } else {
+    throw new Error("Bad Response");
+  }
+}
+
+
+export function renderWithTemplate(templateFn, parentElement, data, callback = null, position = "afterbegin", clear = true) {
+  //clear
+  if (clear) {
+    parentElement.innerHTML = ""; 
+  }
+   const htmlStrings = templateFn()
+        .then(
+          (Result) => {
+              parentElement.insertAdjacentHTML(position, Result); 
+          }); 
+
+
+  if (callback) {
+    callback(data);
+  }
+}
+
+function loadTemplate(path) {
+  return async function () {
+    const res = await fetch(path);
+    if (res.ok) {
+    const html = await res.text();
+    return html;
+    }
+};
+}
+
+export function loadHeaderFooter() {
+
+  const headerTemplateFn = loadTemplate("/partials/header.html");
+  const footerTemplateFn = loadTemplate("/partials/footer.html");
+
+  const headerEl = document.querySelector("#main-header");
+  const footerEl = document.querySelector("#main-footer");
+  
+  renderWithTemplate(headerTemplateFn, headerEl);
+  renderWithTemplate(footerTemplateFn, footerEl);
 }
