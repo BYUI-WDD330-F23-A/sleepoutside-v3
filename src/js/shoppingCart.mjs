@@ -89,7 +89,7 @@ function addingTotalItem() {
         checkoutTemplate(totalItems);
     });
   });
-  console.log(cartItems);
+  
 }
 
 

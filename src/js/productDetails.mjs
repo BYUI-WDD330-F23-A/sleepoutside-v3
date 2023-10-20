@@ -5,7 +5,7 @@ import { iconAnimation } from "./shoppingCart.mjs";
 let theProduct = {};
 
 export default async function productDetails(productId) {
-    
+
     theProduct = await findProductById(productId) || false;
     
     if (theProduct) {
@@ -61,9 +61,9 @@ function renderProductDetails(product) {
 
     productName.innerHTML = product.Name;
     productNameWithoutBrand.innerHTML = product.NameWithoutBrand;
-    productImage.src = product.Image;
+    productImage.src = product.Images.PrimaryLarge;
     productImage.alt = product.NameWithoutBrand;
-    productFinalPrice.innerHTML = product.FinalPrice;
+    productFinalPrice.innerHTML = "$" + product.FinalPrice;
 
     const colorList = product.Colors.map(
         (aColor) => aColor.ColorName

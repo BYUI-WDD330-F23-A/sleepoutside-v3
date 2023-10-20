@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Tents",
+    "slug": "tents",
+    "url": "/product-list/index.html?category=tents",
+    "altTxt": "Tent Icon from Noun Project: Mustofa Bayu",
+    "imgSrc": "/images/icons/noun_Tent_3544767.svg"
+  },
+  {
+    "name": "Backpacks",
+    "slug": "backpacks",
+    "url": "/product-list/index.html?category=backpacks",
+    "altTxt": "Backpack Icon from Noun Project: Mustofa Bayu",
+    "imgSrc": "/images/icons/noun_carrier bag_3544771.svg"
+  },
+  {
+    "name": "Sleeping Bags",
+    "slug": "sleeping-bags",
+    "url": "/product-list/index.html?category=sleeping-bags",
+    "altTxt": "Sleeping Bag Icon from Noun Project: Mustofa Bayu",
+    "imgSrc": "/images/icons/noun_Sleeping Bag_3544775.svg"
+  },
+  {
+    "name": "Hammocks",
+    "slug": "hammocks",
+    "url": "/product-list/index.html?category=hammocks",
+    "altTxt": "Hammock Icon from Noun Project: Paul Richard",
+    "imgSrc": "/images/icons/noun_Hammock_791143.svg"
+  }
+]
