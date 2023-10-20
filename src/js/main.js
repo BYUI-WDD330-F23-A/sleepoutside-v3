@@ -9,7 +9,7 @@ import { loadHeaderFooter } from "./utils.mjs";
 if (document.getElementById("prodList")) {
   productList("prodList", "tents");
 }
-//productList("prodList", "tents");
+
 
 /// We might output some values.
 pageAlert();

@@ -16,7 +16,7 @@ function productCardTemplate(product) {
 
 async function handleErrorScr(product) {
   return await fetch(product.Image).then((response) => {
-    console.debug(response);
+    // console.debug(response);
     if (response.status === 404) {
       return false;
     } else {
@@ -30,7 +30,7 @@ async function filterProductsWithoutImage(products) {
   const filteredResults = await Promise.all(products.map(handleErrorScr));
   // result will be something like [true, false, true, false, ...]
 
-  console.debug(filteredResults);
+  // console.debug(filteredResults);
 
   // filter out products based on the value in filteredResults
   // e.g. if product1 => true, keep, but if product2 => false, drop
@@ -41,9 +41,8 @@ export default async function productList(selector = "", category = "") {
   //TODO add something
   const itemListArea = document.getElementById(selector);
   const products = await getData(category);
-  console.debug(products);
   const filteredProducts = await filterProductsWithoutImage(products);
-  console.debug(filteredProducts);
+  // console.debug(filteredProducts);
 
   renderListWithTemplate(productCardTemplate, itemListArea, filteredProducts);
 }
