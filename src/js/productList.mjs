@@ -41,9 +41,9 @@ export default async function productList(selector = "", category = "") {
   //TODO add something
   const itemListArea = document.getElementById(selector);
   const products = await getData(category);
-  // console.log(products);
   const filteredProducts = await filterProductsWithoutImage(products);
   // console.debug(filteredProducts);
 
   renderListWithTemplate(productCardTemplate, itemListArea, filteredProducts);
 }
+
