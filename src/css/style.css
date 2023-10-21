@@ -173,6 +173,27 @@ button {
   width: 100%;
 }
 
+ul.product__color {
+  list-style-type: none;
+}
+
+ul.product__color li {
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+}
+
+ul.product__color li div {
+  padding: 0 0.5em;
+}
+
+.selectedColorArea {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+
+
 /* Start cart list card styles */
 .cart-card {
   display: grid;
