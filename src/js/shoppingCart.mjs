@@ -13,7 +13,7 @@ function shoppingCartTemplate(item) {
       <h2 class="card__name">${item.Name}</h2>
     </a>
     <p class="cart-card__color">
-      <img src="${item.Colors[theSelectedColor].ColorChipImageSrc}" alt="${item.Colors[theSelectedColor].ColorName}">
+      <img src="${item.Colors[theSelectedColor].ColorChipImageSrc}" alt="${item.Colors[theSelectedColor].ColorName}">  
       ${item.Colors[theSelectedColor].ColorName}
     </p>
     <select class="cart-card__quantity select" id="textboxes">

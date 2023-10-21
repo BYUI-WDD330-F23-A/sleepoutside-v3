@@ -180,7 +180,6 @@ ul.product__color {
 ul.product__color li {
   display: flex;
   flex-direction: row;
-  cursor: pointer;
 }
 
 ul.product__color li div {
