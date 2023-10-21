@@ -39,7 +39,6 @@ async function filterProductsWithoutImage(products) {
 }
 
 export default async function productList(selector = "", category = "") {
-  //TODO add something
   const itemListArea = document.getElementById(selector);
   const products = await getData(category);
   // const filteredProducts = await filterProductsWithoutImage(products);
