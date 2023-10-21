@@ -3,15 +3,14 @@ import { setLocalStorage } from "./utils.mjs";
 import { iconAnimation } from "./shoppingCart.mjs"; 
 
 let theProduct = {};
-let saveProduct = {};
 
 export default async function productDetails(productId) {
 
     theProduct = await findProductById(productId) || false;
-    saveProduct = theProduct;
+    
     if (theProduct) {
         renderProductDetails(theProduct);
-        saveProduct = theProduct;
+        
         // Add the event listener now that the page is rendered.
         document.getElementById("addToCart").addEventListener('click', addProductToCart);
         document.getElementById("addToCart").addEventListener("click", iconAnimation);
@@ -21,7 +20,7 @@ export default async function productDetails(productId) {
 }
 
 export function addProductToCart() {
-
+    theProduct.selectedColor = parseInt(document.getElementById("productSelectColor").value);
     setLocalStorage("so-cart", theProduct);
   }
 
@@ -52,12 +51,15 @@ function renderProductDetails(product) {
             </div>
         </li>`
     );
-
+    
+    theProduct.selectedColor = theProduct.selectedColor || 0;
     const colorSelectList = product.Colors.map(
-        (bColor, index) =>
-        `<option value="${index}">
-            ${bColor.ColorName}
-        </option>`
+        (bColor, index) => {
+            let isSelected = (theProduct.selectedColor === index) ? "selected='true'" : "";
+            return `<option value="${index}" ${isSelected}>
+                ${bColor.ColorName}
+            </option>`;
+        }
     );
     
     let colorListHtml = colorList.join("\n");
