@@ -55,6 +55,7 @@ export default function shoppingList(selector = "") {
   }
 
   renderListWithTemplate(shoppingCartTemplate, itemListArea, products);
+  addingTotalItem();
 }
 
 export function iconAnimation() {
@@ -68,9 +69,8 @@ export function iconAnimation() {
   }, 2000);
 }
 
-cartCardQuantity();
 
-function cartCardQuantity() {
+function addingTotalItem() {
   // Selecting how many items had been chose from the dropdown.
   const sel = document.querySelectorAll(".cart-card__quantity");
   const cartItems = getLocalStorage("so-cart") || [];
