@@ -19,7 +19,6 @@ function categoryCardTemplate(category) {
 }
 
 export default async function categoryList(selector = "") {
-  //TODO add something
   const itemListArea = document.getElementById(selector);
   const categories = await getJsonFile("categories");
   
