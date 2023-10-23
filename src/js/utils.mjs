@@ -88,8 +88,27 @@ export function loadHeaderFooter() {
   const footerTemplateFn = loadTemplate("/partials/footer.html");
 
   const headerEl = document.querySelector("#main-header");
-  const footerEl = document.querySelector("#main-footer");
+  const footerEl = document.querySelector("#main-footer"); 
   
   renderWithTemplate(headerTemplateFn, headerEl);
-  renderWithTemplate(footerTemplateFn, footerEl);
+  renderWithTemplate(footerTemplateFn, footerEl);  
+  itemCountCart();
+}
+
+export async function itemCountCart(){
+  await fetch (document.getElementById("itemCount"))
+    .then(res => {
+      if (res.ok){
+        const items = document.getElementById("itemCount"); 
+        let numItems = getLocalStorage("so-cart"); 
+        if (numItems == null) {
+          numItems = [];
+        } 
+        if (numItems.length <= 0) {
+          items.style.display = `none`; 
+         } else {
+           items.innerHTML = numItems.length; 
+         } 
+      }
+    }) 
 }

@@ -64,6 +64,7 @@ export default function shoppingList(selector = "") {
 
 export function iconAnimation() { 
   const iconCart = document.getElementById("cart-icon"); 
+  
   iconCart.style.width = `35px`;
   iconCart.style.fill = `#525b0f`; 
 
@@ -94,6 +95,5 @@ function addingTotalItem() {
   });
   
 }
-
 
 
