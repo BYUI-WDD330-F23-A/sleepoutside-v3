@@ -1,5 +1,5 @@
 import { findProductById } from "./productData.mjs";
-import { setLocalStorage } from "./utils.mjs";
+import { itemCountCart, setLocalStorage } from "./utils.mjs";
 import { iconAnimation } from "./shoppingCart.mjs"; 
 
 let theProduct = {};
@@ -14,6 +14,7 @@ export default async function productDetails(productId) {
         // Add the event listener now that the page is rendered.
         document.getElementById("addToCart").addEventListener('click', addProductToCart);
         document.getElementById("addToCart").addEventListener("click", iconAnimation);
+        document.getElementById("addToCart").addEventListener("click", itemCountCart);
     } else {
         renderNotFound();
     }
