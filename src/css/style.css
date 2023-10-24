@@ -191,8 +191,6 @@ ul.product__color li div {
   margin-bottom: 1em;
 }
 
-
-
 /* Start cart list card styles */
 .cart-card {
   display: grid;
@@ -250,6 +248,18 @@ ul.product__color li div {
     font-size: inherit;
     grid-template-columns: 150px auto 15%;
   }
+}
+
+#itemCount {
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 
 footer {
