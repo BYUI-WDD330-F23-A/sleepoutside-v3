@@ -1,6 +1,7 @@
-import { renderListWithTemplate, getLocalStorage} from "./utils.mjs";
+import { renderListWithTemplate, getLocalStorage } from "./utils.mjs";
 
 function shoppingCartTemplate(item) {
+
     const theSelectedColor = item.selectedColor || 0;
     const newItem = `<li class="cart-card divider">
     <a href="#" class="cart-card__image">
@@ -25,56 +26,56 @@ function shoppingCartTemplate(item) {
     </select>
     <p class="cart-card__price">$${item.FinalPrice}</p>
   </li>`;
-  
-    return newItem;
-  }
+
+  return newItem;
+}
 
 function checkoutTemplate(items) {
-    let sumTotal = 0;
-    items.forEach((value) => {
-      sumTotal += parseFloat(value);
-    });
+  let sumTotal = 0;
+  items.forEach((value) => {
+    sumTotal += parseFloat(value);
+  });
 
-  
-    const totalPrice = `<div class="cart-footer-hide">
+  const totalPrice = `<div class="cart-footer-hide">
     <p class="cart-total">Total: $${sumTotal}</p>
     <button id="checkoutBtn">Checkout</button>
   </div>`;
-    return totalPrice;
-  }
+  return totalPrice;
+}
 
 export default function shoppingList(selector = "") {
-  const itemListArea = document.getElementById(selector); 
-  const products =  getLocalStorage("so-cart");  
 
-        // cartItems will now never be NULL. More appropriate to check for empty array.
-        if (products.length > 0) {
-            let totalItems = products.map(function (item) {
-              let total = [];
-              total.push(item.FinalPrice);
-              return total;
-            });
-            document.querySelector(".checkout-area").innerHTML =
-              checkoutTemplate(totalItems);
-          }
+  const itemListArea = document.getElementById(selector);
+  const products = getLocalStorage("so-cart");
 
-  renderListWithTemplate(shoppingCartTemplate, itemListArea, products); 
+  // cartItems will now never be NULL. More appropriate to check for empty array.
+  if (products.length > 0) {
+    let totalItems = products.map(function (item) {
+      let total = [];
+      total.push(item.FinalPrice);
+      return total;
+    });
+    document.querySelector(".checkout-area").innerHTML =
+      checkoutTemplate(totalItems);
+  }
 
+  renderListWithTemplate(shoppingCartTemplate, itemListArea, products);
+  addingTotalItem();
 }
 
-export function iconAnimation() { 
-  const iconCart = document.getElementById("cart-icon"); 
-  
+
+export function iconAnimation() {
+  const iconCart = document.getElementById("cart-icon");
+
   iconCart.style.width = `35px`;
-  iconCart.style.fill = `#525b0f`; 
+  iconCart.style.fill = `#525b0f`;
 
   setTimeout(() => {
-      iconCart.style.width = `25px`; 
-      iconCart.style.fill = `#303030`; 
-  }, 2000); 
+    iconCart.style.width = `25px`;
+    iconCart.style.fill = `#303030`;
+  }, 2000);
 }
 
-addingTotalItem();
 
 function addingTotalItem() {
   // Selecting how many items had been chose from the dropdown.
@@ -93,7 +94,4 @@ function addingTotalItem() {
         checkoutTemplate(totalItems);
     });
   });
-  
 }
-
-
