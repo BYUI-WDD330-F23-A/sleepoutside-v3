@@ -26,14 +26,14 @@ export function addProductToCart() {
   let cart_items;
   let matched_index;
   cart_items = getLocalStorage("so-cart");
-  if (cart_items !== null) {
+  if (cart_items != null) {
     cart_items.forEach((item, i) => {
       if (item.Id == theProduct.Id) {
         matched_index = i;
       }
     });
   }
-  if (matched_index !== undefined) {
+  if (matched_index != undefined) {
   } else {
     setLocalStorage("so-cart", theProduct);
   }
