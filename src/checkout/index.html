@@ -18,6 +18,38 @@
     <main class="divider">
       <section class="products">
         <h2>Review & Place your Order</h2>
+        <form>
+          <fieldset legend="Shipping">
+            <label for="firstName">First Name<input name="firstName" type="text"></label>
+            <label for="lastName">Last Name<input name="lastName" type="text"></label>
+            <label for="city">City<input name="city" type="text"></label>
+            <label for="state">State<input name="state" type="text"></label>
+            <label for="zip">Zip<input name="zip" type="text"></label>
+          </fieldset>
+          <fieldset legend="Payment">
+            <label for="cardNumber">Card Number<input name="cardNumber" type="text"></label>
+            <label for="expiration">Expiration<input name="expiration" type="text"></label>
+            <label for="securityCode">Security Code<input name="securityCode" type="password"></label>
+          </fieldset>
+          <fieldset legend="Order summary">
+            <div>
+              <span>Item Subtotal<span id="itemQuantity"></span></span>
+              <span id="subtotal">$</span>
+            </div>       
+            <div>
+              <span>Shipping Estimate</span>
+              <span id="shippingCost">$</span>
+            </div>       
+            <div>
+              <span>Tax</span>
+              <span id="tax">$</span>
+            </div>       
+            <div>
+              <span>Order Total</span>
+              <span id="grandTotal">$</span>
+            </div>       
+          </fieldset>
+        </orm>
       </section>
     </main>
 
