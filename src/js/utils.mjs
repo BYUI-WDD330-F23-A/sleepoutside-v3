@@ -92,23 +92,27 @@ export function loadHeaderFooter() {
   
   renderWithTemplate(headerTemplateFn, headerEl);
   renderWithTemplate(footerTemplateFn, footerEl);  
-  itemCountCart();
+  //itemCountCart();
 }
 
 export async function itemCountCart(){
+  let numItems = getLocalStorage("so-cart"); 
+  console.log(numItems); 
+  if (numItems == null) {
+      numItems = [];
+  } 
+  console.log(numItems); 
   await fetch (document.getElementById("itemCount"))
     .then(res => {
       if (res.ok){
         const items = document.getElementById("itemCount"); 
-        let numItems = getLocalStorage("so-cart"); 
-        if (numItems == null) {
-          numItems = [];
-        } 
-        if (numItems.length <= 0) {
-          items.style.display = `none`; 
+        console.log(items); 
+        if (numItems.length > 0) {
+          items.style.display = `flex`; 
+          items.innerHTML = `${numItems.length}`;
          } else {
-           items.innerHTML = numItems.length; 
+            console.debug("The cart is Empty"); 
          } 
       }
-    }) 
-}
+    })    
+} 
