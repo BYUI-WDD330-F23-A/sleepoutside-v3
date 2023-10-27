@@ -12,7 +12,7 @@ export default async function productDetails(productId) {
         renderProductDetails(theProduct);
         
         // Add the event listener now that the page is rendered.
-        document.getElementById("addToCart").addEventListener('click', addProductToCart);
+        document.getElementById("addToCart").addEventListener("click", addProductToCart);
         document.getElementById("addToCart").addEventListener("click", iconAnimation);
         document.getElementById("addToCart").addEventListener("click", itemCountCart);
     } else {
@@ -77,13 +77,13 @@ function renderProductDetails(product) {
 }
 
 function renderNotFound() {
-    const productName = document.getElementById('productName');
-    const productNameWithoutBrand = document.getElementById('productNameWithoutBrand');
-    const productImage = document.getElementById('productImage');
-    const productFinalPrice = document.getElementById('productFinalPrice');
-    const productColorName = document.getElementById('productColorName');
-    const productDescriptionHtmlSimple = document.getElementById('productDescriptionHtmlSimple');
-    const buttonContainer = document.getElementById('buttonContainer');
+    const productName = document.getElementById("productName");
+    const productNameWithoutBrand = document.getElementById("productNameWithoutBrand");
+    const productImage = document.getElementById("productImage");
+    const productFinalPrice = document.getElementById("productFinalPrice");
+    const productColorName = document.getElementById("productColorName");
+    const productDescriptionHtmlSimple = document.getElementById("productDescriptionHtmlSimple");
+    const buttonContainer = document.getElementById("buttonContainer");
 
     productName.innerHTML = "We've searched all over, but...";
     productNameWithoutBrand.innerHTML = "... We can't find that. &#128546;";
