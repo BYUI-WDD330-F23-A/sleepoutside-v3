@@ -1,9 +1,8 @@
 import { renderListWithTemplate, getLocalStorage } from "./utils.mjs";
 
 function shoppingCartTemplate(item) {
-
-    const theSelectedColor = item.selectedColor || 0;
-    const newItem = `<li class="cart-card divider">
+  const theSelectedColor = item.selectedColor || 0;
+  const newItem = `<li class="cart-card divider">
     <a href="#" class="cart-card__image">
       <img
         src="${item.Images.PrimaryMedium}"
@@ -38,13 +37,12 @@ function checkoutTemplate(items) {
 
   const totalPrice = `<div class="cart-footer-hide">
     <p class="cart-total">Total: $${sumTotal}</p>
-    <button id="checkoutBtn">Checkout</button>
+    <a href="/checkout/"><button id="checkoutBtn">Checkout</button></a>
   </div>`;
   return totalPrice;
 }
 
 export default function shoppingList(selector = "") {
-
   const itemListArea = document.getElementById(selector);
   const products = getLocalStorage("so-cart");
 
@@ -63,7 +61,6 @@ export default function shoppingList(selector = "") {
   addingTotalItem();
 }
 
-
 export function iconAnimation() {
   const iconCart = document.getElementById("cart-icon");
 
@@ -75,7 +72,6 @@ export function iconAnimation() {
     iconCart.style.fill = `#303030`;
   }, 2000);
 }
-
 
 function addingTotalItem() {
   // Selecting how many items had been chose from the dropdown.
