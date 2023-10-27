@@ -14,3 +14,9 @@ if (document.getElementById("categoryListArea")) {
 }
 
 loadHeaderFooter();
+// window.addEventListener("load", (event) => {
+//   console.log("page is fully loaded");
+//   document.getElementById('checkoutBtn') = function () {
+//     location.href = "www.youtube.com";
+//   };
+// })
