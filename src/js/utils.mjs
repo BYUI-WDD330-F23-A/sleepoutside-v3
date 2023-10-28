@@ -153,7 +153,7 @@ export async function itemCountCart(){
           );
           console.log(totalQuantity);
           items.style.display = `flex`; 
-          items.innerHTML = `<span class="qtyNumber">${totalQuantity}</span>`;
+          items.innerHTML = `${totalQuantity}`;
          } else {
             console.debug("The cart is Empty"); 
          } 
