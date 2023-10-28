@@ -17,6 +17,9 @@ export default async function productDetails(productId) {
     document
       .getElementById("addToCart")
       .addEventListener("click", iconAnimation);
+    document
+      .getElementById("addToCart")
+      .addEventListener("click", itemCountCart);
   } else {
     renderNotFound();
   }
