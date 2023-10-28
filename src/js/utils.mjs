@@ -88,8 +88,31 @@ export function loadHeaderFooter() {
   const footerTemplateFn = loadTemplate("/partials/footer.html");
 
   const headerEl = document.querySelector("#main-header");
-  const footerEl = document.querySelector("#main-footer");
+  const footerEl = document.querySelector("#main-footer"); 
   
   renderWithTemplate(headerTemplateFn, headerEl);
-  renderWithTemplate(footerTemplateFn, footerEl);
+  renderWithTemplate(footerTemplateFn, footerEl);  
+  //itemCountCart();
 }
+
+export async function itemCountCart(){
+  let numItems = getLocalStorage("so-cart"); 
+  console.log(numItems); 
+  if (numItems == null) {
+      numItems = [];
+  } 
+  console.log(numItems); 
+  await fetch (document.getElementById("itemCount"))
+    .then(res => {
+      if (res.ok){
+        const items = document.getElementById("itemCount"); 
+        console.log(items); 
+        if (numItems.length > 0) {
+          items.style.display = `flex`; 
+          items.innerHTML = `${numItems.length}`;
+         } else {
+            console.debug("The cart is Empty"); 
+         } 
+      }
+    })    
+} 

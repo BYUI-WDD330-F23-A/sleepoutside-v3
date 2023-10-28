@@ -1,8 +1,7 @@
-import { getData } from "./productData.mjs";
+import { getProductsByCategory } from "./externalServices.mjs";
 import { renderListWithTemplate } from "./utils.mjs";
 
 function productCardTemplate(product) {
-  
   return `<li class="product-card">
       <a href="/product_pages/index.html?product=${product.Id}">
       <img
@@ -39,12 +38,10 @@ async function filterProductsWithoutImage(products) {
 }
 
 export default async function productList(selector = "", category = "") {
-  //TODO add something
   const itemListArea = document.getElementById(selector);
-  const products = await getData(category);
+  const products = await getProductsByCategory(category);
   // const filteredProducts = await filterProductsWithoutImage(products);
   // console.debug(products);
 
   renderListWithTemplate(productCardTemplate, itemListArea, products);
 }
-

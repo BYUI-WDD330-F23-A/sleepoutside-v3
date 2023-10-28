@@ -8,8 +8,8 @@
 
     <title>Sleep Outside | Checkout</title>
 
-    <link rel="stylesheet" href="css/style.css" />
-    <script src="../js/main.js" type="module"></script>
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="../js/checkout.js" type="module"></script>
   </head>
 
   <body>
@@ -18,6 +18,51 @@
     <main class="divider">
       <section class="products">
         <h2>Review & Place your Order</h2>
+        <form name="checkout">
+          <fieldset legend="Shipping">
+            <label for="fname"
+              >First Name<input name="fname" type="text"
+            /></label>
+            <label for="lname"
+              >Last Name<input name="lname" type="text"
+            /></label>
+            <label for="city">City<input name="city" type="text" /></label>
+            <label for="state">State<input name="state" type="text" /></label>
+            <label for="zip"
+              >Zip<input name="zip" type="text" id="zip"
+            /></label>
+          </fieldset>
+          <fieldset legend="Payment">
+            <label for="cardNumber"
+              >Card Number<input name="cardNumber" type="text"
+            /></label>
+            <label for="expiration"
+              >Expiration<input name="expiration" type="text"
+            /></label>
+            <label for="code"
+              >Security Code<input name="code" type="password"
+            /></label>
+          </fieldset>
+          <fieldset legend="Order summary">
+            <div>
+              <span>Item Subtotal<span id="itemQuantity"></span></span>
+              <span id="subtotal">$</span>
+            </div>
+            <div>
+              <span>Shipping Estimate</span>
+              <span id="shipping">$</span>
+            </div>
+            <div>
+              <span>Tax</span>
+              <span id="tax">$</span>
+            </div>
+            <div>
+              <span>Order Total</span>
+              <span id="orderTotal">$</span>
+              <button id="checkoutSubmit" type="submit">Checkout</button>
+            </div>
+          </fieldset>
+        </form>
       </section>
     </main>
 
