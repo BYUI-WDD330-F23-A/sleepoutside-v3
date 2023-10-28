@@ -101,13 +101,12 @@ export async function itemCountCart(){
   if (numItems == null) {
       numItems = [];
   } 
-  console.log(numItems); 
   await fetch (document.getElementById("itemCount"))
     .then(res => {
       if (res.ok){
         const items = document.getElementById("itemCount"); 
-        console.log(items); 
         if (numItems.length > 0) {
+          console.log(numItems.length);
           items.style.display = `flex`; 
           items.innerHTML = `${numItems.length}`;
          } else {
