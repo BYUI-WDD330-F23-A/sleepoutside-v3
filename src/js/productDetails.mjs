@@ -1,4 +1,4 @@
-import { findProductById } from "./productData.mjs";
+import { findProductById } from "./externalServices.mjs";
 import { itemCountCart, getLocalStorage, setLocalStorage } from "./utils.mjs";
 import { iconAnimation } from "./shoppingCart.mjs";
 
