@@ -27,21 +27,32 @@ export default async function productDetails(productId) {
 
 
 export function addProductToCart() {
-  // this won't add multiple items when hitting the add to cart button.
-  let cart_items;
-  let matched_index;
-  cart_items = getLocalStorage("so-cart");
-  if (cart_items != null) {
-    cart_items.forEach((item, i) => {
-      if (item.Id == theProduct.Id) {
-        matched_index = i;
-      }
-    });
-  }
-  if (matched_index != undefined) {
-  } else {
-    setLocalStorage("so-cart", theProduct);
-  }
+  // This won't add multiple items when hitting the add to cart button.
+  // Future expansion, we could select the quanitity at the time we add to cart.
+  // let selectedQuantity = document.getElementById("productQuantity").value
+  let selectedQuantity = 1; // Hopefully this to be replaced by the line above someday.
+  
+  theProduct.quantity = selectedQuantity;
+  theProduct.selectedColor = parseInt(
+    document.getElementById("productSelectColor").value
+  );
+  setLocalStorage("so-cart", theProduct);
+  // setLocalStorage will figure out if we are adding a duplicate item.
+
+  // let cart_items;
+  // let matched_index;
+  // cart_items = getLocalStorage("so-cart");
+  // if (cart_items != null) {
+  //   cart_items.forEach((item, i) => {
+  //     if (item.Id == theProduct.Id && item.selectedColor == theProduct.selectedColor) {
+  //       matched_index = i;
+  //     }
+  //   });
+  // }
+  // if (matched_index != undefined) {
+  // } else {
+  //   setLocalStorage("so-cart", theProduct);
+  // }
 }
 
 

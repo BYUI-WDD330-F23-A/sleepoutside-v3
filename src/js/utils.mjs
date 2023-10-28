@@ -1,25 +1,55 @@
-// wrapper for querySelector...returns matching element
+// Wrapper for querySelector... Returns matching element.
 export function qs(selector, parent = document) {
   return parent.querySelector(selector);
 }
-// or a more concise version if you are into that sort of thing:
-// export const qs = (selector, parent = document) => parent.querySelector(selector);
 
-// retrieve data from localstorage
+// Retrieve data from Localstorage
 export function getLocalStorage(key) {
   return JSON.parse(localStorage.getItem(key));
 }
-// save data to local storage
+
+// Save data to local storage
 export function setLocalStorage(key, data) {
-  let item = localStorage.getItem(key);//get the item that is added to the cart. 
-  let soCart = JSON.parse(item); // parses string and returns a JavaScript object.
+  let item = localStorage.getItem(key); // Get the items that are currently in the cart. 
+  let soCart = JSON.parse(item);        // Parses string and returns a JavaScript object.
   if (soCart == null) {
+    // If there's nothing in the cart, make sure we start with an empty array
+    // so we can have all the Array methods. 
     soCart = [];
   }
-  soCart.push(data); //add the data fro the item to the array. 
-  localStorage.setItem(key, JSON.stringify(soCart));//storage that array in a string. 
+
+  // Not possible to have a negative index, 
+  // so this will act as a flag for no match or
+  // an empty cart.
+  let matched_index = -1; 
+  
+  if (soCart.length > 0) {
+    soCart.forEach(
+      (item, i) => {
+        // Match both model number and color option.
+        if (
+          item.Id == data.Id && 
+          item.selectedColor == data.selectedColor
+        ) {
+          // Found a match, let's record where we found it.
+          matched_index = i;
+        }
+      });
+  }
+
+  if (matched_index > -1) {
+    // Increase the quantity of the item already in the cart.
+    soCart[matched_index].quantity++;
+  } else {
+    // Otherwise, push the new item on the list.
+    soCart.push(data); 
+  }
+  // Replace entire localStorage with modified array.
+  localStorage.setItem(key, JSON.stringify(soCart));
 }
-// set a listener for both touchend and click
+
+
+// Set a listener for both touchend and click
 export function setClick(selector, callback) {
   qs(selector).addEventListener("touchend", (event) => {
     event.preventDefault();
@@ -28,16 +58,17 @@ export function setClick(selector, callback) {
   qs(selector).addEventListener("click", callback);
 }
 
+// Get a parameter that is in the URL and return the argument value. (Key=value).
 export function getParam(param) {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const value = urlParams.get(param);
-
   return value;
 }
 
+
+// Render a list of items using a specific template function.
 export function renderListWithTemplate(templateFn, parentElement, list, position = "afterbegin", clear = true) {
-  //clear
   if (clear) {
     parentElement.innerHTML = ""; 
   }
@@ -46,6 +77,7 @@ export function renderListWithTemplate(templateFn, parentElement, list, position
 }
 
 
+// Convert an HTTP response to JSON.
 export function convertToJson(res) {
   if (res.ok) {
     return res.json();
@@ -55,6 +87,7 @@ export function convertToJson(res) {
 }
 
 
+// Render a single data object with a template function.
 export function renderWithTemplate(templateFn, parentElement, data, callback = null, position = "afterbegin", clear = true) {
   //clear
   if (clear) {
@@ -72,6 +105,8 @@ export function renderWithTemplate(templateFn, parentElement, data, callback = n
   }
 }
 
+
+// Load an external template file.
 function loadTemplate(path) {
   return async function () {
     const res = await fetch(path);
@@ -82,6 +117,8 @@ function loadTemplate(path) {
 };
 }
 
+
+// Load the header and footer templates.
 export function loadHeaderFooter() {
 
   const headerTemplateFn = loadTemplate("/partials/header.html");
@@ -95,23 +132,31 @@ export function loadHeaderFooter() {
   //itemCountCart();
 }
 
+
+// Calculate number of items in the cart and display a 
+// count bubble on the shopping cart icon.
 export async function itemCountCart(){
   let numItems = getLocalStorage("so-cart"); 
-  console.log(numItems); 
+  // console.log(numItems); 
   if (numItems == null) {
       numItems = [];
   } 
   await fetch (document.getElementById("itemCount"))
     .then(res => {
-      if (res.ok){
+      if (res.ok) {
         const items = document.getElementById("itemCount"); 
         if (numItems.length > 0) {
-          console.log(numItems.length);
+          let totalQuantity = numItems.reduce(
+            (a, x) => {
+              return(a + x.quantity);
+            }, 0
+          );
+          console.log(totalQuantity);
           items.style.display = `flex`; 
-          items.innerHTML = `${numItems.length}`;
+          items.innerHTML = `<span class="qtyNumber">${totalQuantity}</span>`;
          } else {
             console.debug("The cart is Empty"); 
          } 
       }
-    })    
+    });    
 } 

@@ -2,6 +2,13 @@ import { renderListWithTemplate, getLocalStorage } from "./utils.mjs";
 
 function shoppingCartTemplate(item) {
   const theSelectedColor = item.selectedColor || 0;
+  const quantityNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const quantityListArray = quantityNumbers.map( 
+    (value) => {
+      let isSelected = item.quantity == value ? 'selected="true"' : '';
+      return `<option value="${value}" ${isSelected}>${value}</option>`;
+    });
+  const quantityList = quantityListArray.join("\n");
   const newItem = `<li class="cart-card divider">
     <a href="#" class="cart-card__image">
       <img
@@ -16,13 +23,9 @@ function shoppingCartTemplate(item) {
       <img src="${item.Colors[theSelectedColor].ColorChipImageSrc}" alt="${item.Colors[theSelectedColor].ColorName}">  
       ${item.Colors[theSelectedColor].ColorName}
     </p>
-    <select class="cart-card__quantity select" id="textboxes">
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-    </select>
+    <select class="cart-card__quantity select" id="textboxes">` +
+    quantityList +
+    `</select>
     <p class="cart-card__price">$${item.FinalPrice}</p>
   </li>`;
 
