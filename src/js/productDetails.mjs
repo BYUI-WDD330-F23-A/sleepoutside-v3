@@ -38,21 +38,6 @@ export function addProductToCart() {
   );
   setLocalStorage("so-cart", theProduct);
   // setLocalStorage will figure out if we are adding a duplicate item.
-
-  // let cart_items;
-  // let matched_index;
-  // cart_items = getLocalStorage("so-cart");
-  // if (cart_items != null) {
-  //   cart_items.forEach((item, i) => {
-  //     if (item.Id == theProduct.Id && item.selectedColor == theProduct.selectedColor) {
-  //       matched_index = i;
-  //     }
-  //   });
-  // }
-  // if (matched_index != undefined) {
-  // } else {
-  //   setLocalStorage("so-cart", theProduct);
-  // }
 }
 
 
@@ -69,7 +54,7 @@ function renderProductDetails(product) {
   );
   const addToCartButton = document.getElementById("addToCart");
   const productSelectColor = document.getElementById("productSelectColor");
-
+    
   productName.innerHTML = product.Name;
   productNameWithoutBrand.innerHTML = product.NameWithoutBrand;
   productImage.src = product.Images.PrimaryLarge;
@@ -119,11 +104,12 @@ function renderNotFound() {
   );
   const productImage = document.getElementById("productImage");
   const productFinalPrice = document.getElementById("productFinalPrice");
-  const productColorName = document.getElementById("productColorName");
   const productDescriptionHtmlSimple = document.getElementById(
     "productDescriptionHtmlSimple"
   );
   const buttonContainer = document.getElementById("buttonContainer");
+  const colorsAvailableList = document.getElementById("colorsAvailableList");
+  const selectedColorArea = document.getElementById("selectedColorArea");
 
   productName.innerHTML = "We've searched all over, but...";
   productNameWithoutBrand.innerHTML = "... We can't find that. &#128546;";
@@ -131,10 +117,13 @@ function renderNotFound() {
   productImage.alt = "A crossroads sign.";
   productFinalPrice.innerHTML = "";
 
-  productColorName.innerHTML = "";
+  colorsAvailableList.innerHTML = "";
+  selectedColorArea.innerHTML = "";
 
-  productDescriptionHtmlSimple.innerHTML = `We are very sorry, but it appears the product you have requested is not available. If the manufacturer has not discontinued the product,
-  please check back at a later date to see if we have restocked this item.`
+  productDescriptionHtmlSimple.innerHTML = 
+  `We are very sorry, but it appears the product you have requested is not available. 
+  If the manufacturer has not discontinued the product, please check back at a later 
+  date to see if we have restocked this item.`
 
   buttonContainer.innerHTML = "";
 
