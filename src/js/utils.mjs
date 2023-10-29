@@ -129,7 +129,6 @@ export function loadHeaderFooter() {
   
   renderWithTemplate(headerTemplateFn, headerEl);
   renderWithTemplate(footerTemplateFn, footerEl);  
-  //itemCountCart();
 }
 
 
@@ -146,6 +145,7 @@ export async function itemCountCart(){
       if (res.ok) {
         const items = document.getElementById("itemCount"); 
         if (numItems.length > 0) {
+          // Loop through the items in cart and add up their quantities.
           let totalQuantity = numItems.reduce(
             (a, x) => {
               return(a + x.quantity);

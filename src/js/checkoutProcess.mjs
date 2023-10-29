@@ -30,6 +30,7 @@ const checkoutProcess = {
   key: "",
   outputSelector: "",
   list: [],
+  totalQuantity: 0,
   itemTotal: 0,
   shipping: 0,
   tax: 0,
@@ -43,15 +44,17 @@ const checkoutProcess = {
   calculateItemSummary: function () {
     // calculate and display the total amount of the items in the cart, and the number of items.
     const summaryElement = document.getElementById("subtotal");
+    // Calculate the total quantity as sum of all quantities.
+    this.totalQuantity = this.list.reduce((a,x) => a + x.quantity, 0); 
     const itemQuantity = document.getElementById("itemQuantity");
-    itemQuantity.innerText = `(${this.list.length})`;
+    itemQuantity.innerText = `(${this.totalQuantity})`;  // Was formerly `(${this.list.length})`;
     const amounts = this.list.map((item) => item.FinalPrice);
     this.itemTotal = amounts.reduce((sum, item) => sum + item);
     summaryElement.innerText = "$" + this.itemTotal;
   },
   calculateOrdertotal: function () {
     // calculate the shipping and tax amounts. Then use them to along with the cart total to figure out the order total
-    this.shipping = 10 + (this.list.length - 1) * 2;
+    this.shipping = 10 + (this.totalQuantity - 1) * 2;
     this.tax = (this.itemTotal * 0.06).toFixed(2);
     this.orderTotal = (
       parseFloat(this.itemTotal) +
