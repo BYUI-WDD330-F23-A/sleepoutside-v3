@@ -23,9 +23,9 @@ function shoppingCartTemplate(item) {
       <img src="${item.Colors[theSelectedColor].ColorChipImageSrc}" alt="${item.Colors[theSelectedColor].ColorName}">  
       ${item.Colors[theSelectedColor].ColorName}
     </p>
-    <select class="cart-card__quantity select" id="textboxes">` +
+    <label for="${item.Id}-Qty">Qty: <select name="${item.Id}-Qty" class="cart-card__quantity select" id="textboxes">` +
     quantityList +
-    `</select>
+    `</select></label>
     <p class="cart-card__price">$${item.FinalPrice}</p>
   </li>`;
 
