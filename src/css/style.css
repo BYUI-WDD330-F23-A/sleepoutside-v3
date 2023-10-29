@@ -262,6 +262,11 @@ ul.product__color li div {
   display: none;
 }
 
+#iconLink {
+  text-decoration: none;
+  border: 0;
+}
+
 footer {
   font-size: var(--small-font);
   padding: 1em;

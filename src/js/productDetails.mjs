@@ -1,12 +1,11 @@
 import { findProductById } from "./externalServices.mjs";
-import { itemCountCart, setLocalStorage } from "./utils.mjs";
+import { itemCountCart, getLocalStorage, setLocalStorage } from "./utils.mjs";
 import { iconAnimation } from "./shoppingCart.mjs";
 
 let theProduct = {};
 
 export default async function productDetails(productId) {
   theProduct = (await findProductById(productId)) || false;
-
 
   if (theProduct) {
     renderProductDetails(theProduct);
@@ -23,15 +22,39 @@ export default async function productDetails(productId) {
       .addEventListener("click", itemCountCart);
   } else {
     renderNotFound();
-  } 
+  }
 }
 
+
 export function addProductToCart() {
+  // This won't add multiple items when hitting the add to cart button.
+  // Future expansion, we could select the quanitity at the time we add to cart.
+  // let selectedQuantity = document.getElementById("productQuantity").value
+  let selectedQuantity = 1; // Hopefully this to be replaced by the line above someday.
+  
+  theProduct.quantity = selectedQuantity;
   theProduct.selectedColor = parseInt(
     document.getElementById("productSelectColor").value
   );
   setLocalStorage("so-cart", theProduct);
+  // setLocalStorage will figure out if we are adding a duplicate item.
+
+  // let cart_items;
+  // let matched_index;
+  // cart_items = getLocalStorage("so-cart");
+  // if (cart_items != null) {
+  //   cart_items.forEach((item, i) => {
+  //     if (item.Id == theProduct.Id && item.selectedColor == theProduct.selectedColor) {
+  //       matched_index = i;
+  //     }
+  //   });
+  // }
+  // if (matched_index != undefined) {
+  // } else {
+  //   setLocalStorage("so-cart", theProduct);
+  // }
 }
+
 
 function renderProductDetails(product) {
   const productName = document.getElementById("productName");
@@ -46,6 +69,7 @@ function renderProductDetails(product) {
   );
   const addToCartButton = document.getElementById("addToCart");
   const productSelectColor = document.getElementById("productSelectColor");
+
   productName.innerHTML = product.Name;
   productNameWithoutBrand.innerHTML = product.NameWithoutBrand;
   productImage.src = product.Images.PrimaryLarge;
@@ -85,6 +109,7 @@ function renderProductDetails(product) {
 
   return product;
 }
+
 
 function renderNotFound() {
 
