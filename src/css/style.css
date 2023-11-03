@@ -140,6 +140,10 @@ button {
   text-decoration: none;
   color: var(--dark-grey);
 }
+
+#shopping-list{
+  flex-flow: column wrap;
+}
 /* Styles for product lists */
 .product-card {
   flex: 1 1 45%;
@@ -194,7 +198,7 @@ ul.product__color li div {
 /* Start cart list card styles */
 .cart-card {
   display: grid;
-  grid-template-columns: 25% auto 15%;
+  grid-template-columns: 25% auto 15% 15%;
   font-size: var(--small-font);
   /* max-height: 120px; */
   align-items: center;
@@ -232,9 +236,9 @@ ul.product__color li div {
 }
 
 /* *checout-area*/
-/* .checkout-area{
-   display: none;
-} */
+#checkoutLink{
+  text-decoration: none;
+}
 
 @media screen and (min-width: 500px) {
   body {
@@ -246,7 +250,7 @@ ul.product__color li div {
   }
   .cart-card {
     font-size: inherit;
-    grid-template-columns: 150px auto 15%;
+    grid-template-columns: 150px auto 15% 10%;
   }
 }
 

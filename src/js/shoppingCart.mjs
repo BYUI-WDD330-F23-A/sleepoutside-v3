@@ -27,10 +27,32 @@ function shoppingCartTemplate(item) {
     quantityList +
     `</select>
     <p class="cart-card__price">$${item.FinalPrice}</p>
+    <button type="button" id= "removeItem">X</button>
   </li>`;
 
   return newItem;
 }
+
+function remElement(element){
+  const elem = document.getElementById(element); 
+  return elem
+}
+async function removeItems() {
+  let numItems = getLocalStorage("so-cart"); 
+  // console.log(numItems); 
+  if (numItems == null) {
+      numItems = [];
+  } 
+  await fetch (document.getElementById("removeItem"))
+  .then(res => {
+    if (res.ok) {
+      /* const btnRemove = document.getElementById("removeItem"); 
+      btnRemove.addEventListener("click", console.log("remove")) */
+      const elem = document.getElementById("removeItem"); 
+      console.log(elem);
+    } 
+    });
+} 
 
 function checkoutTemplate(items) {
   let sumTotal = 0;
@@ -40,7 +62,7 @@ function checkoutTemplate(items) {
 
   const totalPrice = `<div class="cart-footer-hide">
     <p class="cart-total">Total: $${sumTotal}</p>
-    <a href="/checkout/"><button id="checkoutBtn">Checkout</button></a>
+    <a href="/checkout/" id="checkoutLink"><button id="checkoutBtn">Checkout</button></a>
   </div>`;
   return totalPrice;
 }

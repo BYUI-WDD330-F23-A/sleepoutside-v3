@@ -16,5 +16,5 @@ if (document.getElementById("categoryListArea")) {
 loadHeaderFooter();
 
 window.addEventListener("load", (event) => {
-  itemCountCart(); 
+  itemCountCart();
 });

@@ -1,5 +1,5 @@
 import { findProductById } from "./externalServices.mjs";
-import { itemCountCart, getLocalStorage, setLocalStorage } from "./utils.mjs";
+import { itemCountCart, setLocalStorage } from "./utils.mjs";
 import { iconAnimation } from "./shoppingCart.mjs";
 
 let theProduct = {};
@@ -37,22 +37,7 @@ export function addProductToCart() {
     document.getElementById("productSelectColor").value
   );
   setLocalStorage("so-cart", theProduct);
-  // setLocalStorage will figure out if we are adding a duplicate item.
 
-  // let cart_items;
-  // let matched_index;
-  // cart_items = getLocalStorage("so-cart");
-  // if (cart_items != null) {
-  //   cart_items.forEach((item, i) => {
-  //     if (item.Id == theProduct.Id && item.selectedColor == theProduct.selectedColor) {
-  //       matched_index = i;
-  //     }
-  //   });
-  // }
-  // if (matched_index != undefined) {
-  // } else {
-  //   setLocalStorage("so-cart", theProduct);
-  // }
 }
 
 
