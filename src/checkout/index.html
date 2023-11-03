@@ -21,26 +21,30 @@
         <form name="checkout">
           <fieldset legend="Shipping">
             <label for="fname"
-              >First Name<input name="fname" type="text"
+              >First Name<input name="fname" type="text" required
             /></label>
             <label for="lname"
-              >Last Name<input name="lname" type="text"
+              >Last Name<input name="lname" type="text" required
             /></label>
-            <label for="city">City<input name="city" type="text" /></label>
-            <label for="state">State<input name="state" type="text" /></label>
+            <label for="city"
+              >City<input name="city" type="text" required
+            /></label>
+            <label for="state"
+              >State<input name="state" type="text" required
+            /></label>
             <label for="zip"
-              >Zip<input name="zip" type="text" id="zip"
+              >Zip<input name="zip" type="text" id="zip" required
             /></label>
           </fieldset>
           <fieldset legend="Payment">
             <label for="cardNumber"
-              >Card Number<input name="cardNumber" type="text"
+              >Card Number<input name="cardNumber" type="number" required
             /></label>
             <label for="expiration"
-              >Expiration<input name="expiration" type="text"
+              >Expiration<input name="expiration" type="text" required
             /></label>
             <label for="code"
-              >Security Code<input name="code" type="password"
+              >Security Code<input name="code" type="password" required
             /></label>
           </fieldset>
           <fieldset legend="Order summary">

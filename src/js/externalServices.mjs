@@ -23,7 +23,7 @@ export async function checkout(order) {
     },
     body: JSON.stringify(order),
   };
-
-  const result = await fetch("https://wdd330-backend.onrender.com/checkout", options);
-  console.log(result);
+  return await fetch("https://wdd330-backend.onrender.com/checkout/", options)
+  .then(convertToJson);
+  //console.log(res);
 }
