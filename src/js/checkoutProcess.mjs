@@ -1,4 +1,4 @@
-import { getLocalStorage } from "./utils.mjs";
+import { getLocalStorage, clearLocalStorage,  } from "./utils.mjs";
 import { checkout } from "./externalServices.mjs";
 // takes a form element and returns an object where the key is the "name" of the form input.
 function formDataToJSON(formElement) {
@@ -84,6 +84,9 @@ const checkoutProcess = {
     console.log(jsonData);
     try {
       const res = await checkout(jsonData);
+      clearLocalStorage("so-cart"); //clear the local 
+      location.assign("/checkout/success.html");//send to the success page
+
       console.log(res);
     } catch (err) {
       console.log(err);

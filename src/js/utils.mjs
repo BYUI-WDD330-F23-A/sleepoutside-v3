@@ -8,6 +8,11 @@ export function getLocalStorage(key) {
   return JSON.parse(localStorage.getItem(key));
 }
 
+export function clearLocalStorage(key){
+  localStorage.setItem(key, JSON.stringify([]));
+  return true; 
+}
+
 // Save data to local storage
 export function setLocalStorage(key, data) {
   let item = localStorage.getItem(key); // Get the items that are currently in the cart. 
@@ -17,7 +22,6 @@ export function setLocalStorage(key, data) {
     // so we can have all the Array methods. 
     soCart = [];
   }
-
   // Not possible to have a negative index, 
   // so this will act as a flag for no match or
   // an empty cart.
@@ -47,6 +51,8 @@ export function setLocalStorage(key, data) {
   // Replace entire localStorage with modified array.
   localStorage.setItem(key, JSON.stringify(soCart));
 }
+
+
 
 
 // Set a listener for both touchend and click
@@ -79,13 +85,13 @@ export function renderListWithTemplate(templateFn, parentElement, list, position
 
 // Convert an HTTP response to JSON.
 export function convertToJson(res) {
+  const jsonResponse = res.json();
   if (res.ok) {
-    return res.json();
+    return jsonResponse;
   } else {
-    throw new Error("Bad Response");
+    throw { name: "servicesError", message: jsonResponse}; 
   }
 }
-
 
 // Render a single data object with a template function.
 export function renderWithTemplate(templateFn, parentElement, data, callback = null, position = "afterbegin", clear = true) {
