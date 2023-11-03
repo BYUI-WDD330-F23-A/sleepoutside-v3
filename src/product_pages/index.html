@@ -23,14 +23,14 @@
         <h2 id="productNameWithoutBrand" class="divider"></h2>
         <img id="productImage" class="divider" src="" alt="" />
         <p id="productFinalPrice" class="product-card__price"></p>
-        <p>Colors Available:
+        <div id="colorsAvailableList">
+          <p>Colors Available:</p>
           <ul id="productColorName" class="product__color"></ul>
-        </p>
+        </div>
         <p id="productDescriptionHtmlSimple" class="product__description"></p>
-        <div class="selectedColorArea">
-          Select Color: 
-          <select name="selectedColor" id="productSelectColor">  
-          </select>
+        <div id="selectedColorArea">
+          Select Color:
+          <select name="selectedColor" id="productSelectColor"></select>
         </div>
         <div id="buttonContainer" class="product-detail__add">
           <button id="addToCart" data-id="">Add to Cart</button>
