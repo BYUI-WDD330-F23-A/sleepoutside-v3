@@ -271,3 +271,28 @@ footer {
   font-size: var(--small-font);
   padding: 1em;
 }
+
+.product-card__price {
+  font-weight: bold;
+}
+
+.msrp-slashed {
+  text-decoration: line-through;
+  color: red;
+}
+
+.percent-discount {
+  color: green;
+  font-weight: bold;
+}
+
+.discount-price {
+  font-weight: bold;
+  background-color: gold;
+  color: black;
+  padding: 4px;
+  box-shadow: black 0px 0px 10px;
+  text-align: center;
+  border-radius: 10px;
+
+}
