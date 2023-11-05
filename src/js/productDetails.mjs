@@ -1,5 +1,5 @@
 import { findProductById } from "./externalServices.mjs";
-import { itemCountCart, getLocalStorage, setLocalStorage } from "./utils.mjs";
+import { itemCountCart, setLocalStorage } from "./utils.mjs";
 import { iconAnimation } from "./shoppingCart.mjs";
 
 let theProduct = {};
@@ -39,7 +39,6 @@ export function addProductToCart() {
   setLocalStorage("so-cart", theProduct);
   // setLocalStorage will figure out if we are adding a duplicate item.
 }
-
 
 function renderProductDetails(product) {
   const productName = document.getElementById("productName");

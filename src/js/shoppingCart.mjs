@@ -1,6 +1,6 @@
-import { renderListWithTemplate, getLocalStorage } from "./utils.mjs";
+import { renderListWithTemplate, getLocalStorage, setLocalStorage } from "./utils.mjs";
 
-function shoppingCartTemplate(item) {
+function shoppingCartTemplate(item, index) {
   const theSelectedColor = item.selectedColor || 0;
   const quantityNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const quantityListArray = quantityNumbers.map( 
@@ -27,10 +27,32 @@ function shoppingCartTemplate(item) {
     quantityList +
     `</select></label>
     <p class="cart-card__price">$${item.FinalPrice}</p>
+    <button type="button" value= "${index}" id="btn${index}" >X</button>
   </li>`;
+  removeItems(`btn${index}`); 
 
   return newItem;
 }
+
+async function removeItems(item) {
+  await fetch(document.getElementById(item))
+  .then(res => {
+    if (res.ok) {
+      console.log(document.getElementById(item)); 
+      let htmlElement = document.getElementById(item); 
+      htmlElement.addEventListener("click", () => {
+        const elementId = parseInt(htmlElement.getAttribute("value"));
+        const itemsStorage = getLocalStorage("so-cart");
+        console.log(itemsStorage); 
+        itemsStorage.splice(elementId, 1); 
+        console.log(itemsStorage); 
+        localStorage.setItem("so-cart", JSON.stringify(itemsStorage)); 
+        //const storageArray = keys.map(key => myObject[key])
+        window.location.reload(); 
+      })
+    }
+  }) 
+};  
 
 function checkoutTemplate(items) {
   let sumTotal = 0;
@@ -40,7 +62,7 @@ function checkoutTemplate(items) {
 
   const totalPrice = `<div class="cart-footer-hide">
     <p class="cart-total">Total: $${sumTotal}</p>
-    <a href="/checkout/"><button id="checkoutBtn">Checkout</button></a>
+    <a href="/checkout/" id="checkoutLink"><button id="checkoutBtn">Checkout</button></a>
   </div>`;
   return totalPrice;
 }
