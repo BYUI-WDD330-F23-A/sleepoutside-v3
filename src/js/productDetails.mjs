@@ -1,5 +1,5 @@
-import { findProductById } from "./externalServices.mjs";
-import { itemCountCart, setLocalStorage } from "./utils.mjs";
+import { findProductById, determineDiscount } from "./externalServices.mjs";
+import { itemCountCart, getLocalStorage, setLocalStorage } from "./utils.mjs";
 import { iconAnimation } from "./shoppingCart.mjs";
 
 let theProduct = {};
@@ -58,7 +58,8 @@ function renderProductDetails(product) {
   productNameWithoutBrand.innerHTML = product.NameWithoutBrand;
   productImage.src = product.Images.PrimaryLarge;
   productImage.alt = product.NameWithoutBrand;
-  productFinalPrice.innerHTML = "$" + product.FinalPrice;
+
+  productFinalPrice.innerHTML = `Price: ${determineDiscount(product)}`;
 
   const colorList = product.Colors.map(
     (aColor) =>

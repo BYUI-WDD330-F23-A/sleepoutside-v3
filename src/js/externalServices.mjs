@@ -15,6 +15,22 @@ export async function findProductById(id, category) {
   // return products.find((item) => item.Id === id);
 }
 
+export function determineDiscount(product) {
+  let priceLine = `${product.FinalPrice.toFixed(2)}`;
+  if (product.FinalPrice < product.SuggestedRetailPrice) {
+    let discountPercent = Math.round((1 - (product.FinalPrice / product.SuggestedRetailPrice)) * 100);
+    priceLine = `
+      <span class="msrp-slashed">$${product.SuggestedRetailPrice.toFixed(2)}</span> 
+      <span class="percent-discount">
+        ${discountPercent}% off! &nbsp; 
+      </span><br/>
+      <p class="discount-price">
+        Now $${product.FinalPrice.toFixed(2)}!
+      </p>`;
+  } 
+  return priceLine;
+}
+
 export async function checkout(order) {
   const options = {
     method: "POST",
