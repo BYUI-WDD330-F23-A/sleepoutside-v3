@@ -1,4 +1,4 @@
-import { getLocalStorage, clearLocalStorage,  } from "./utils.mjs";
+import { getLocalStorage, clearLocalStorage, alertMessage, removeAllAlerts} from "./utils.mjs";
 import { checkout } from "./externalServices.mjs";
 // takes a form element and returns an object where the key is the "name" of the form input.
 function formDataToJSON(formElement) {
@@ -73,7 +73,7 @@ const checkoutProcess = {
     orderTotal.innerText = "$" + this.orderTotal;
     tax.innerText = "$" + this.tax;
   },
-  async checkout(form) {
+  checkout: async function (form) {
     // Build the item object.
     const jsonData = formDataToJSON(form);
     jsonData.orderDate = new Date();
@@ -84,12 +84,16 @@ const checkoutProcess = {
     console.log(jsonData);
     try {
       const res = await checkout(jsonData);
+      console.log(res); 
       clearLocalStorage("so-cart"); //clear the local 
       location.assign("/checkout/success.html");//send to the success page
-
-      console.log(res);
     } catch (err) {
-      console.log(err);
+      console.log(err); 
+      removeAllAlerts();
+      for (let message in err.message) {
+        console.log(message); 
+        alertMessage(err.message[message]);
+      }
     }
     // Call the checkout method in external services.
   },

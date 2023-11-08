@@ -40,7 +40,6 @@ export function addProductToCart() {
   // setLocalStorage will figure out if we are adding a duplicate item.
 }
 
-
 function renderProductDetails(product) {
   const productName = document.getElementById("productName");
   const productNameWithoutBrand = document.getElementById(
