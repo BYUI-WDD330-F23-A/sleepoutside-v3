@@ -18,10 +18,3 @@ document.forms["checkout"].addEventListener("submit", (e) => {
   // e.target would contain our form in this case
   checkoutProcess.checkout(e.target);
 });
-
-// listening for click on the button
-// document.querySelector("#checkoutSubmit").addEventListener("click", (e) => {
-//   e.preventDefault();
-
-//   checkoutProcess.checkout(document.forms['checkout']);
-// });

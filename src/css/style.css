@@ -141,7 +141,7 @@ button {
   color: var(--dark-grey);
 }
 
-#shopping-list{
+#shopping-list {
   flex-flow: column wrap;
 }
 /* Styles for product lists */
@@ -236,8 +236,20 @@ ul.product__color li div {
 }
 
 /* *checout-area*/
-#checkoutLink{
+#checkoutLink {
   text-decoration: none;
+}
+
+/* checkout form */
+#checkout {
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#checkout label{
+  display: flex;
+  flex-direction: column;
 }
 
 @media screen and (min-width: 500px) {
@@ -298,5 +310,4 @@ footer {
   box-shadow: black 0px 0px 10px;
   text-align: center;
   border-radius: 10px;
-
 }

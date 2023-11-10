@@ -18,34 +18,36 @@
     <main class="divider">
       <section class="products">
         <h2>Review & Place your Order</h2>
-        <form name="checkout">
+        <form name="checkout" id="checkout">
           <fieldset legend="Shipping">
             <label for="fname"
-              >First Name<input name="fname" type="text" required
+              >First Name<input name="fname" id="fname" type="text" placeholder="John" required 
             /></label>
             <label for="lname"
-              >Last Name<input name="lname" type="text" required
+              >Last Name<input name="lname" id="lname" type="text" placeholder="Doe" required 
             /></label>
-            <label for="street">Street address<input name="street" type="text" required></label>
+            <label for="street"
+              >Street address<input name="street" id="street" type="text" placeholder="Main Street" required
+            /></label>
             <label for="city"
-              >City<input name="city" type="text" required
+              >City<input name="city" id="city" type="text" placeholder="New York" required 
             /></label>
             <label for="state"
-              >State<input name="state" type="text" required
+              >State<input name="state" id="state" type="text" placeholder="New York" required 
             /></label>
             <label for="zip"
-              >Zip<input name="zip" type="text" id="zip" required
+              >Zip<input name="zip" id="zip" type="text" placeholder="12345" required 
             /></label>
           </fieldset>
           <fieldset legend="Payment">
             <label for="cardNumber"
-              >Card Number<input name="cardNumber" type="text" required
+              >Card Number<input name="cardNumber" id="cardNumber" type="text" placeholder="1234123412341234" required
             /></label>
             <label for="expiration"
-              >Expiration<input name="expiration" type="text" required
+              >Expiration<input name="expiration" id="expiration" type="text" placeholder="MM/YY" required
             /></label>
             <label for="code"
-              >Security Code<input name="code" type="password" required
+              >Security Code<input name="code" id="code" type="password" required placeholder="123" 
             /></label>
           </fieldset>
           <fieldset legend="Order summary">

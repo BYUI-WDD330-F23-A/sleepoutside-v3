@@ -29,11 +29,11 @@ export function setLocalStorage(key, data) {
   
   if (soCart.length > 0) {
     soCart.forEach(
-      (item, i) => {
+      (itm, i) => {
         // Match both model number and color option.
         if (
-          item.Id == data.Id && 
-          item.selectedColor == data.selectedColor
+          itm.Id == data.Id && 
+          itm.selectedColor == data.selectedColor
         ) {
           // Found a match, let's record where we found it.
           matched_index = i;
@@ -99,7 +99,7 @@ export function renderWithTemplate(templateFn, parentElement, data, callback = n
   if (clear) {
     parentElement.innerHTML = ""; 
   }
-   const htmlStrings = templateFn()
+  const htmlStrings = templateFn()
         .then(
           (Result) => {
               parentElement.insertAdjacentHTML(position, Result); 
@@ -153,16 +153,13 @@ export async function itemCountCart(){
         if (numItems.length > 0) {
           // Loop through the items in cart and add up their quantities.
           let totalQuantity = numItems.reduce(
-            (a, x) => {
-              return(a + x.quantity);
-            }, 0
-          );
-          console.log(totalQuantity);
+            (a, x) => a + x.quantity, 0);
+          //console.log(totalQuantity);
           items.style.display = `flex`; 
           items.innerHTML = `${totalQuantity}`;
-         } else {
+        } else {
             console.debug("The cart is Empty"); 
-         } 
+        } 
       }
     });    
 } 

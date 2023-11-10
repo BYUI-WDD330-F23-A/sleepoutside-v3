@@ -12,7 +12,6 @@ export async function findProductById(id, category) {
   const response = await fetch(baseURL + `product/${id}`);
   const data = await convertToJson(response);
   return data.Result;
-  // return products.find((item) => item.Id === id);
 }
 
 export function determineDiscount(product) {

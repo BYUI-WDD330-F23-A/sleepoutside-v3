@@ -15,7 +15,7 @@ function productCardTemplate(product) {
       </li>`;
 }
 
-async function handleErrorScr(product) {
+/* async function handleErrorScr(product) {
   return await fetch(product.Image).then((response) => {
     // console.debug(response);
     if (response.status === 404) {
@@ -36,7 +36,7 @@ async function filterProductsWithoutImage(products) {
   // filter out products based on the value in filteredResults
   // e.g. if product1 => true, keep, but if product2 => false, drop
   return products.filter((_, index) => filteredResults[index]);
-}
+} */
 
 export default async function productList(selector = "", category = "") {
   const itemListArea = document.getElementById(selector);
