@@ -38,7 +38,7 @@ export async function checkout(order) {
     },
     body: JSON.stringify(order),
   };
-  return await fetch("https://wdd330-backend.onrender.com/checkout/", options)
-  .then(convertToJson);
+  //return await fetch("https://wdd330-backend.onrender.com/checkout/", options).then(convertToJson);
+  return await fetch(baseURL + "checkout/", options).then(convertToJson);
   //console.log(res);
 }

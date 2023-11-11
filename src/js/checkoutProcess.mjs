@@ -26,7 +26,7 @@ firstName.addEventListener("input", () => {
   if (fnamePattern.test(userfname)) {
     firstName.style.cssText = validStyle(); 
   } else {
-    firstName.setCustomValidity("Please enter a valid input. Only Letters")
+    //firstName.setCustomValidity("Please enter a valid input. Only Letters")
     firstName.style.cssText = invalidStyle(); 
   }
 });
@@ -37,7 +37,7 @@ lastName.addEventListener("input", () => {
   if (lnamePattern.test(userlname)) {
     lastName.style.cssText = validStyle();
   } else {
-    lastName.setCustomValidity("Please enter a valid input. Only Letters")
+    //lastName.setCustomValidity("Please enter a valid input. Only Letters")
     lastName.style.cssText = invalidStyle();
   }
 });
@@ -48,7 +48,7 @@ streetName.addEventListener("input", () => {
   if (stnamePattern.test(userstname)) {
     streetName.style.cssText = validStyle();
   } else {
-    streetName.setCustomValidity("Please enter Street name with no '#' symbol")
+    //streetName.setCustomValidity("Please enter Street name with no '#' symbol")
     streetName.style.cssText = invalidStyle();
   }
 });
@@ -59,7 +59,7 @@ cityName.addEventListener("input", () => {
   if (citynamePattern.test(userctname)) {
     cityName.style.cssText = validStyle();
   } else {
-    cityName.setCustomValidity("Please enter Street name with no '#' symbol")
+    //cityName.setCustomValidity("Please enter Street name with no '#' symbol")
     cityName.style.cssText = invalidStyle();
   }
 });
@@ -70,7 +70,7 @@ stateName.addEventListener("input", () => {
   if (statenamePattern.test(userstatename)) {
     stateName.style.cssText = validStyle();
   } else {
-    stateName.setCustomValidity("Please enter Street name with no '#' symbol")
+    //stateName.setCustomValidity("Please enter Street name with no '#' symbol")
     stateName.style.cssText = invalidStyle();
   }
 });
@@ -81,7 +81,7 @@ zipCode.addEventListener("input", () => {
   if (zipCodePattern.test(userzipcode)) {
     zipCode.style.cssText = validStyle();
   } else {
-    zipCode.setCustomValidity("Only numbers")
+    //zipCode.setCustomValidity("Only numbers")
     zipCode.style.cssText = invalidStyle();
   }
 });
@@ -111,10 +111,13 @@ expirationDate.addEventListener("input", () => {
 codeNumber.addEventListener("input", () => {
   const codeNumberPattern = /^\d{3}$/;
   const usercodenumber = codeNumber.value;  
+  console.log(codeNumberPattern.test(usercodenumber)); 
   if (codeNumberPattern.test(usercodenumber)) {
     codeNumber.style.cssText = validStyle();
+    codeNumber.setCustomValidity(""); 
   } else {
-    //codeNumber.setCustomValidity("Add 16 numbers")
+    console.log("here"); 
+    codeNumber.setCustomValidity("Add 3 number. No letters")
     codeNumber.style.cssText = invalidStyle();
   }
 });

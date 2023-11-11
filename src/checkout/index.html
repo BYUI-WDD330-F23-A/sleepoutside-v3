@@ -47,7 +47,7 @@
               >Expiration<input name="expiration" id="expiration" type="text" placeholder="MM/YY" required
             /></label>
             <label for="code"
-              >Security Code<input name="code" id="code" type="password" required placeholder="123" 
+              >Security Code<input name="code" id="code" type="password" placeholder="123" pattern="/^\d{3}$/" required  
             /></label>
           </fieldset>
           <fieldset legend="Order summary">
