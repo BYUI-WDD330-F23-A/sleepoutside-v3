@@ -173,10 +173,6 @@ button {
   margin: auto;
 }
 
-.product-detail img {
-  width: 100%;
-}
-
 ul.product__color {
   list-style-type: none;
 }
@@ -290,6 +286,36 @@ footer {
 
 .product-card__price {
   font-weight: bold;
+}
+
+.product-image-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  /* overflow: clip; */
+  padding-bottom: 20px;
+}
+
+img#productimage {
+  display: block;
+  max-width: 480px;
+}
+
+.product-banner-text {
+  display: none;
+  position: absolute;
+  width: 100%;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: red;
+  color: white;
+  padding: 3px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 5px 5px 13px black;
 }
 
 .msrp-slashed {

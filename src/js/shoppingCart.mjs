@@ -26,7 +26,7 @@ function shoppingCartTemplate(item, index) {
     <label for="${item.Id}-Qty">Qty: <select name="${item.Id}-Qty" class="cart-card__quantity select" id="textboxes">` +
     quantityList +
     `</select></label>
-    <p class="cart-card__price">$${item.FinalPrice}</p>
+    <p class="cart-card__price">$${item.FinalPrice.toFixed(2)}</p>
     <button type="button" value= "${index}" id="btn${index}" >X</button>
   </li>`;
   removeItems(`btn${index}`); 
@@ -60,8 +60,9 @@ function checkoutTemplate(items) {
     sumTotal += parseFloat(value);
   });
 
+  // TODO: Adjust format of total price to line up with price column in list.
   const totalPrice = `<div class="cart-footer-hide">
-    <p class="cart-total">Total: $${sumTotal}</p>
+    <p class="cart-total">Total: $${sumTotal.toFixed(2)}</p>
     <a href="/checkout/" id="checkoutLink"><button id="checkoutBtn">Checkout</button></a>
   </div>`;
   return totalPrice;
