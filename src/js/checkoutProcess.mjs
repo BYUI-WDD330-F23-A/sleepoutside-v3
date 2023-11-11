@@ -1,5 +1,6 @@
 import { getLocalStorage, clearLocalStorage, alertMessage, removeAllAlerts} from "./utils.mjs";
 import { checkout } from "./externalServices.mjs";
+
 // takes a form element and returns an object where the key is the "name" of the form input.
 function formDataToJSON(formElement) {
   const formData = new FormData(formElement),
@@ -8,7 +9,6 @@ function formDataToJSON(formElement) {
   formData.forEach(function (value, key) {
     convertedJSON[key] = value;
   });
-
   return convertedJSON;
 }
 
@@ -81,17 +81,17 @@ const checkoutProcess = {
     jsonData.shipping = this.shipping;
     jsonData.tax = this.tax;
     jsonData.items = packageItems(this.list);
-    console.log(jsonData);
+    //console.log(jsonData);
     try {
       const res = await checkout(jsonData);
       console.log(res); 
       clearLocalStorage("so-cart"); //clear the local 
       location.assign("/checkout/success.html");//send to the success page
     } catch (err) {
-      console.log(err); 
+      //console.log(err); 
       removeAllAlerts();
       for (let message in err.message) {
-        console.log(message); 
+        //console.log(message); 
         alertMessage(err.message[message]);
       }
     }

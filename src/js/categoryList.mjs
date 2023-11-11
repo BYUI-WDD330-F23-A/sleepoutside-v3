@@ -1,13 +1,11 @@
 import { convertToJson } from "./utils.mjs";
 import { renderListWithTemplate } from "./utils.mjs";
 
-
 async function getJsonFile(name) {
   return fetch(`../json/${name}.json`)
   .then(convertToJson)
   .then((data) => data);
 }
-
 
 function categoryCardTemplate(category) {
   return `<li>

@@ -12,7 +12,6 @@ export async function findProductById(id, category) {
   const response = await fetch(baseURL + `product/${id}`);
   const data = await convertToJson(response);
   return data.Result;
-  // return products.find((item) => item.Id === id);
 }
 
 export function determineDiscount(product) {
@@ -39,7 +38,7 @@ export async function checkout(order) {
     },
     body: JSON.stringify(order),
   };
-  return await fetch("https://wdd330-backend.onrender.com/checkout/", options)
-  .then(convertToJson);
+  return await fetch(baseURL + "checkout/", options).then(convertToJson);
+  //return await fetch("https://wdd330-backend.onrender.com/checkout/", options).then(convertToJson); 
   //console.log(res);
 }

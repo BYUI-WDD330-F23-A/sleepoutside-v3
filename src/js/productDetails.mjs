@@ -1,5 +1,5 @@
 import { findProductById, determineDiscount } from "./externalServices.mjs";
-import { itemCountCart, getLocalStorage, setLocalStorage } from "./utils.mjs";
+import { itemCountCart, setLocalStorage } from "./utils.mjs";
 import { iconAnimation } from "./shoppingCart.mjs";
 
 let theProduct = {};

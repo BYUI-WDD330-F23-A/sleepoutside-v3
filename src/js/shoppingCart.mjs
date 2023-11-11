@@ -1,11 +1,11 @@
-import { renderListWithTemplate, getLocalStorage, setLocalStorage } from "./utils.mjs";
+import { renderListWithTemplate, getLocalStorage } from "./utils.mjs";
 
 function shoppingCartTemplate(item, index) {
   const theSelectedColor = item.selectedColor || 0;
   const quantityNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const quantityListArray = quantityNumbers.map( 
     (value) => {
-      let isSelected = item.quantity == value ? 'selected="true"' : '';
+      let isSelected = item.quantity == value ? "selected='true'" : "";
       return `<option value="${value}" ${isSelected}>${value}</option>`;
     });
   const quantityList = quantityListArray.join("\n");
@@ -38,14 +38,14 @@ async function removeItems(item) {
   await fetch(document.getElementById(item))
   .then(res => {
     if (res.ok) {
-      console.log(document.getElementById(item)); 
+      //console.log(document.getElementById(item)); 
       let htmlElement = document.getElementById(item); 
       htmlElement.addEventListener("click", () => {
         const elementId = parseInt(htmlElement.getAttribute("value"));
         const itemsStorage = getLocalStorage("so-cart");
-        console.log(itemsStorage); 
+        //console.log(itemsStorage); 
         itemsStorage.splice(elementId, 1); 
-        console.log(itemsStorage); 
+        //console.log(itemsStorage); 
         localStorage.setItem("so-cart", JSON.stringify(itemsStorage)); 
         //const storageArray = keys.map(key => myObject[key])
         window.location.reload(); 
@@ -103,7 +103,7 @@ function addingTotalItem() {
   const sel = document.querySelectorAll(".cart-card__quantity");
   const cartItems = getLocalStorage("so-cart") || [];
   sel.forEach((e, i) => {
-    e.addEventListener("change", (event) => {
+    e.addEventListener("change", () => {
       cartItems[i].count = e.value;
       let totalItems = cartItems.map(function (item) {
         let total = [];
