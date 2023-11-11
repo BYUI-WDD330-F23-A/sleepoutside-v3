@@ -15,8 +15,10 @@ export function clearLocalStorage(key){
 
 // Save data to local storage
 export function setLocalStorage(key, data) {
-  let item = localStorage.getItem(key); // Get the items that are currently in the cart. 
-  let soCart = JSON.parse(item);        // Parses string and returns a JavaScript object.
+  // Get items that are in cart and parse string to return a JavaScript object.
+  let soCart = JSON.parse(
+    localStorage.getItem(key)
+  );
   if (soCart == null) {
     // If there's nothing in the cart, make sure we start with an empty array
     // so we can have all the Array methods. 
@@ -29,11 +31,11 @@ export function setLocalStorage(key, data) {
   
   if (soCart.length > 0) {
     soCart.forEach(
-      (itm, i) => {
+      (item, i) => {
         // Match both model number and color option.
         if (
-          itm.Id == data.Id && 
-          itm.selectedColor == data.selectedColor
+          item.Id == data.Id && 
+          item.selectedColor == data.selectedColor
         ) {
           // Found a match, let's record where we found it.
           matched_index = i;
