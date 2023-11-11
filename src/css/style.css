@@ -242,12 +242,12 @@ ul.product__color li div {
 
 /* checkout form */
 #checkout {
-  display:flex;
+  display: flex;
   flex-direction: row;
   justify-content: center;
 }
 
-#checkout label{
+#checkout label {
   display: flex;
   flex-direction: column;
 }
