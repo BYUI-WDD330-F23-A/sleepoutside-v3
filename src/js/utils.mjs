@@ -151,14 +151,14 @@ export async function itemCountCart(){
   await fetch (document.getElementById("itemCount"))
     .then(res => {
       if (res.ok) {
-        const items = document.getElementById("itemCount"); 
+        const itemCount = document.getElementById("itemCount"); 
         if (numItems.length > 0) {
           // Loop through the items in cart and add up their quantities.
           let totalQuantity = numItems.reduce(
             (a, x) => a + x.quantity, 0);
           //console.log(totalQuantity);
-          items.style.display = `flex`; 
-          items.innerHTML = `${totalQuantity}`;
+          itemCount.style.display = `flex`; 
+          itemCount.innerHTML = `${totalQuantity}`;
         } else {
             console.debug("The cart is Empty"); 
         } 

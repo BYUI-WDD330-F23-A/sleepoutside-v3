@@ -53,13 +53,20 @@ function renderProductDetails(product) {
   );
   const addToCartButton = document.getElementById("addToCart");
   const productSelectColor = document.getElementById("productSelectColor");
-    
+
   productName.innerHTML = product.Name;
   productNameWithoutBrand.innerHTML = product.NameWithoutBrand;
   productImage.src = product.Images.PrimaryLarge;
   productImage.alt = product.NameWithoutBrand;
 
   productFinalPrice.innerHTML = `Price: ${determineDiscount(product)}`;
+
+  if (product.FinalPrice < product.SuggestedRetailPrice) {
+    let discountPercent = Math.round((1 - (product.FinalPrice / product.SuggestedRetailPrice)) * 100);
+    // Strangely, in some scopes we can address elements with IDs directly without loading variables.
+    productBannerText.innerHTML=`${discountPercent}% off!`;
+    productBannerText.style="display: block";
+  }
 
   const colorList = product.Colors.map(
     (aColor) =>
