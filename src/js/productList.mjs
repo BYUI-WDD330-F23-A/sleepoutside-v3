@@ -45,4 +45,23 @@ export default async function productList(selector = "", category = "") {
   // console.debug(products);
 
   renderListWithTemplate(productCardTemplate, itemListArea, products);
+
+  document.querySelector("#sort_by").addEventListener("change", () => {
+    // console.log("changed");
+    sortingList(products);
+  }); 
 }
+
+function sortingList(products, items) {
+  const cartItems = getLocalStorage("so-cart") || [];
+  // console.log(document.querySelector("#sort_by").value);
+  let sortOption = document.querySelector("#sort_by").value;
+  if(sortOption == 'sortByName'){
+    return cartItems.products.sort()
+
+  }else if(sortOption == 'sortByPrice'){
+    return cartItems.products.reverse()
+  }
+
+}
+
