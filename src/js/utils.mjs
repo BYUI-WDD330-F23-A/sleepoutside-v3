@@ -13,6 +13,10 @@ export function clearLocalStorage(key){
   return true; 
 }
 
+export function setToken(token) {
+  localStorage.setItem('so-token', JSON.stringify(token));
+}
+
 // Save data to local storage
 export function setLocalStorage(key, data) {
   // Get items that are in cart and parse string to return a JavaScript object.
@@ -86,7 +90,7 @@ export function renderListWithTemplate(templateFn, parentElement, list, position
 
 
 // Convert an HTTP response to JSON.
-export function convertToJson(res) {
+export async function convertToJson(res) {
   const jsonResponse = res.json();
   if (res.ok) {
     return jsonResponse;
@@ -128,7 +132,7 @@ function loadTemplate(path) {
 
 // Load the header and footer templates.
 export function loadHeaderFooter() {
-
+  
   const headerTemplateFn = loadTemplate("/partials/header.html");
   const footerTemplateFn = loadTemplate("/partials/footer.html");
 

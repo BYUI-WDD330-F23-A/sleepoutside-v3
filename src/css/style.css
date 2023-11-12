@@ -337,3 +337,21 @@ img#productimage {
   text-align: center;
   border-radius: 10px;
 }
+
+.order-table {
+  width: 100%;
+}
+
+.order-table tr {
+  background-color: var(--primary-color);
+}
+
+.order-table tr:nth-child(2) {
+  background-color: var(--light-grey);
+}
+
+.order-table th {
+  text-align: left;
+  background-color: var(--secondary-color);
+  color: white;
+}
