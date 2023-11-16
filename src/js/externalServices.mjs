@@ -42,3 +42,15 @@ export async function checkout(order) {
   //return await fetch("https://wdd330-backend.onrender.com/checkout/", options).then(convertToJson); 
   //console.log(res);
 }
+
+export async function loginRequest(creds) {
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(creds),
+  };
+  const response = await fetch(baseURL + "login", options).then(convertToJson);
+  return response.accessToken;
+}

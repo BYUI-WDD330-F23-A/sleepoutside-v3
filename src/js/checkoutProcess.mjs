@@ -90,10 +90,10 @@ const checkoutProcess = {
     } catch (err) {
       //console.log(err); 
       removeAllAlerts();
-      for (let message in err.message) {
-        //console.log(message); 
+      for (let message in err.message) { 
         alertMessage(err.message[message]);
       }
+      console.log(err);
     }
     // Call the checkout method in external services.
   },

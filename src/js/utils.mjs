@@ -84,8 +84,8 @@ export function renderListWithTemplate(templateFn, parentElement, list, position
 
 
 // Convert an HTTP response to JSON.
-export function convertToJson(res) {
-  const jsonResponse = res.json();
+export async function convertToJson(res) {
+  const jsonResponse = await res.json();
   if (res.ok) {
     return jsonResponse;
   } else {
